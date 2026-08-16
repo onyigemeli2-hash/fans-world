@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fans World — Ronda Rousey Fan Experience</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#09090c;color:#f7f4ed;font-family:Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}.nav{position:sticky;top:0;z-index:10;background:rgba(9,9,12,.96);border-bottom:1px solid #29292f;display:flex;justify-content:space-between;align-items:center;padding:17px 6%}.logo{font-size:24px;font-weight:900;letter-spacing:1px}.logo span,.gold{color:#d8b45b}.links{display:flex;gap:24px;font-size:14px;color:#c9c7c1}
+.hero{min-height:76vh;padding:80px 7%;display:flex;align-items:center;background:linear-gradient(110deg,#0b0b0e 35%,rgba(33,26,13,.75)),radial-gradient(circle at 85% 30%,#735c2b,#101014 48%);position:relative;overflow:hidden}
+.hero:after{content:"R";position:absolute;right:5%;bottom:-90px;font-size:520px;font-weight:900;color:rgba(216,180,91,.05);line-height:1}
+.hero-inner{max-width:760px;position:relative;z-index:1}.eyebrow{color:#e0c57b;text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:800}
+h1{font-size:clamp(48px,8vw,92px);line-height:.92;margin:20px 0}.lead{font-size:18px;line-height:1.75;color:#c8c6c1;max-width:680px}
+.btn{display:inline-block;border:0;border-radius:9px;background:#d8b45b;color:#111;padding:15px 23px;font-weight:900;cursor:pointer;margin:8px 8px 0 0}.btn.dark{background:#17171d;color:#fff;border:1px solid #383840}
+section{max-width:1250px;margin:auto;padding:75px 7%}h2{text-align:center;font-size:40px;margin:0 0 12px}.sub{text-align:center;color:#aaa;max-width:720px;margin:0 auto 42px;line-height:1.7}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:14px}.shot{border-radius:16px;overflow:hidden;position:relative;background:linear-gradient(145deg,#332817,#121217);border:1px solid #2d2d34}.shot.big{grid-row:span 2}.shot:after{content:"Ronda Rousey • WWE highlight";position:absolute;bottom:0;left:0;right:0;padding:30px 16px 15px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-weight:800}
+.character{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}.profile{padding:35px;border:1px solid #343039;border-radius:20px;background:linear-gradient(145deg,#19171a,#0f0f13)}.profile h3{font-size:31px;margin:0 0 10px}.stat{display:inline-block;border:1px solid #5b4a27;padding:8px 11px;border-radius:30px;color:#dfc276;margin:5px 5px 5px 0;font-size:12px}.profile p{color:#bcb9b2;line-height:1.7}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:#141419;border:1px solid #2c2c33;border-radius:18px;padding:28px}.card.featured{border-color:#c7a552;box-shadow:0 15px 50px rgba(0,0,0,.25)}.price{font-size:38px;font-weight:900;margin:13px 0}.card li{color:#bbb;line-height:2}.card button{width:100%}
+.exclusive{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.exclusive article{padding:25px;border:1px solid #2c2c34;border-radius:16px;background:#111116}.exclusive h3{margin-top:0}.exclusive p{color:#aaa;line-height:1.65}
+.formbox{max-width:700px;margin:auto;background:#141419;border:1px solid #303038;border-radius:20px;padding:30px}.row{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{display:block;margin:15px 0 7px;font-size:14px;color:#ddd}input,select{width:100%;padding:14px;border-radius:8px;border:1px solid #3a3a43;background:#0c0c10;color:#fff}.verification{margin-top:18px;padding:18px;border:1px solid #4b4028;border-radius:12px;background:#17140e;color:#cfc4a7;font-size:13px;line-height:1.6}
+footer{border-top:1px solid #27272e;text-align:center;color:#777;padding:35px 7%;font-size:13px}
+@media(max-width:850px){.links{display:none}.gallery{grid-template-columns:1fr 1fr}.shot.big{grid-row:span 1}.character,.cards,.exclusive{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style>
+
+<style>
+#accessGate{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at 50% 20%,#332817,#09090c 55%);display:flex;align-items:center;justify-content:center;padding:24px}
+.gatebox{width:min(460px,100%);background:#141419;border:1px solid #4b4028;border-radius:22px;padding:34px;box-shadow:0 25px 80px rgba(0,0,0,.6);text-align:center}
+.gatebox h1{font-size:34px;margin:10px 0}.gatebox p{color:#aaa;line-height:1.6}.gatebox input{margin-top:12px;text-align:center;letter-spacing:4px;font-weight:800;font-size:18px}.gate-error{color:#e58d8d;font-size:13px;min-height:20px;margin-top:10px}
+</style>
+</head>
+<body>
+<div id="accessGate">
+  <div class="gatebox">
+    <div class="eyebrow">FANS WORLD • DEMO ACCESS</div>
+    <h1>Members Area</h1>
+    <p>Enter the demo access code to open the Fans World site.</p>
+    <input id="accessCode" type="password" maxlength="6" placeholder="ACCESS CODE" autocomplete="off">
+    <button class="btn" style="width:100%;margin-top:18px" onclick="unlockSite()">Open Fans World</button>
+    <div id="gateError" class="gate-error"></div>
+    <p style="font-size:11px;color:#777;margin-top:18px">Demo gate only. This is not a secure authentication system.</p>
+  </div>
+</div>
+
+<nav class="nav"><div class="logo">FANS <span>WORLD</span></div><div class="links"><a href="#highlights">Highlights</a><a href="#character">Ronda</a><a href="#cards">Fan Cards</a><a href="#exclusive">Exclusive</a><a href="#meet">Meet &amp; Greet</a><a href="#payment">Payment</a><a href="#selfie">Selfie</a><a href="#join">Join</a></div></nav>
+
+<header class="hero">
+<div class="hero-inner">
+<div class="eyebrow">Premium fan community • Ronda Rousey experience</div>
+<h1>Enter the <span class="gold">Fans World</span></h1>
+<p class="lead">A polished fan-club concept celebrating Ronda Rousey's combat-sports and WWE legacy through curated highlights, digital membership cards and members-only community content.</p>
+<a class="btn" href="#cards">Explore Membership</a><a class="btn dark" href="#highlights">View Highlights</a>
+</div></header>
+
+<section id="highlights">
+<h2>WWE Highlight Gallery</h2><p class="sub">Official WWE pages document Ronda Rousey's WWE career highlights, including her championships, Royal Rumble victory and major WrestleMania moments.</p>
+<div class="gallery">
+<a class="shot big" href="https://www.wwe.com/superstars/ronda-rousey" target="_blank" rel="noopener"></a>
+<a class="shot" href="https://www.wwe.com/gallery/ronda-rousey-combat-sports-history-photos" target="_blank" rel="noopener"></a>
+<a class="shot" href="https://www.wwe.com/shows/wrestlemania/31/the-rock-ronda-rousey-the-authority-photos" target="_blank" rel="noopener"></a>
+<a class="shot" href="https://www.wwe.com/shows/survivorseries/2018/gallery/ronda-rousey-charlotte-flair-photos" target="_blank" rel="noopener"></a>
+<a class="shot" href="https://www.wwe.com/shows/royalrumble/2022/30-woman-royal-rumble-match-results" target="_blank" rel="noopener"></a>
+</div>
+<p class="sub" style="margin-top:20px"><a class="gold" href="https://www.wwe.com/superstars/ronda-rousey" target="_blank" rel="noopener">Open WWE's official Ronda Rousey profile →</a></p>
+</section>
+
+<section id="character">
+<h2>Ronda Rousey Character</h2><p class="sub">A stylized fan profile inspired by Rousey's documented WWE persona.</p>
+<div class="character"><div class="profile"><h3>“Rowdy” Ronda Rousey</h3><span class="stat">Armbar</span><span class="stat">Piper's Pit</span><span class="stat">Raw Women's Champion</span><span class="stat">SmackDown Women's Champion</span><span class="stat">Women's Tag Team Champion</span><p>WWE's official profile describes Rousey as an Olympic medalist and UFC champion who became a major WWE Superstar. Her WWE career includes championship victories and a Royal Rumble win.</p></div>
+<div class="profile"><h3>Fan Character Card</h3><p>Collectible-style digital presentation for the Fans World community. Use only officially licensed names, photographs and artwork when publishing a commercial site.</p><div class="btn" onclick="alert('Character preview unlocked in this demo.')">Unlock Preview</div></div></div>
+</section>
+
+<section id="cards">
+<h2>Fans World Fan Card Packages</h2>
+<p class="sub">Three premium membership packages for the Fans World community. These are fan-community benefits and do not represent an endorsement by, or direct access to, any celebrity unless separately authorized.</p>
+
+<div class="cards">
+<div class="card">
+<h3>Regular Fan Card</h3>
+<div class="price">$100</div>
+<p style="color:#d8b45b;font-weight:800">Essential Fan Package</p>
+<ul>
+<li>Personalized digital fan card</li>
+<li>Unique membership number</li>
+<li>Members-only newsletters and updates</li>
+<li>Curated WWE/Ronda Rousey highlight archive</li>
+<li>Exclusive wallpapers and digital collectibles</li>
+<li>Access to Fans World community polls</li>
+</ul>
+<button class="btn" onclick="choose('Regular Fan Card — $100')">Purchase</button>
+</div>
+
+<div class="card featured">
+<h3>VIP Fan Card</h3>
+<div class="price">$300</div>
+<p style="color:#d8b45b;font-weight:800">Premium Fan Package</p>
+<ul>
+<li>Everything in the Regular package</li>
+<li>VIP digital membership card</li>
+<li>Early access to new Fans World content</li>
+<li>Extended match/highlight archive</li>
+<li>Premium behind-the-scenes-style editorial content</li>
+<li>VIP fan polls, quizzes and digital events</li>
+<li>Limited-edition digital collectibles</li>
+</ul>
+<button class="btn" onclick="choose('VIP Fan Card — $300')">Purchase</button>
+</div>
+
+<div class="card">
+<h3>Golden Fan Card</h3>
+<div class="price">$500</div>
+<p style="color:#d8b45b;font-weight:800">Ultimate Fan Package</p>
+<ul>
+<li>Everything in the VIP package</li>
+<li>Premium golden digital fan card</li>
+<li>Full Fans World exclusive-content library</li>
+<li>Special-edition digital posters and wallpapers</li>
+<li>Priority access to online fan activities</li>
+<li>Exclusive member badges and collectibles</li>
+<li>Premium fan-community recognition</li>
+</ul>
+<button class="btn" onclick="choose('Golden Fan Card — $500')">Purchase</button>
+</div>
+</div>
+
+<div class="verification" style="max-width:900px;margin:30px auto 0">
+<b>Important:</b> Fans World is presented here as a fan-community concept. Membership does not automatically provide private meetings, personal messages, flights, vacations, backstage access, or celebrity endorsement. Any real-world event benefit must be separately authorized and clearly disclosed.
+</div>
+</section>
+
+<section id="meet">
+<h2>Exclusive Meet &amp; Greet Experience</h2>
+<p class="sub">A premium, limited-capacity experience available only when an officially authorized event is scheduled. This package does not guarantee a meeting unless the event is confirmed by the authorized organizer.</p>
+
+<div class="profile" style="max-width:900px;margin:auto;text-align:center;border-color:#7b6530">
+<div class="eyebrow">FANS WORLD • VIP EXPERIENCE</div>
+<h3 style="font-size:34px;margin:15px 0">Golden Meet &amp; Greet Package</h3>
+<div class="price" style="font-size:48px;color:#d8b45b">$1,000</div>
+<p>Designed as the highest-level Fans World experience, with a premium event package for an officially authorized meet-and-greet.</p>
+<div class="exclusive" style="text-align:left;margin-top:25px">
+<article><h3>Personalized Access</h3><p>Reserved access to the scheduled meet-and-greet area during an officially confirmed event.</p></article>
+<article><h3>Premium Keepsake</h3><p>Exclusive Fans World digital collectible and event keepsake, subject to organizer availability.</p></article>
+<article><h3>Photo Opportunity</h3><p>One event photograph where photography is permitted by the venue and authorized guest.</p></article>
+</div>
+<button class="btn" onclick="choose('Golden Meet & Greet Package — $1,000')">Request Availability</button>
+<div class="verification" style="text-align:left;margin-top:22px">
+<b>Authorization &amp; availability notice:</b> This experience must only be sold when the celebrity, representative, venue, or authorized event organizer has confirmed the appearance. Payment does not create a guaranteed personal meeting, private message, travel arrangement, backstage access, or endorsement. Final event details, eligibility, cancellation terms, and availability must be disclosed before payment.
+</div>
+</div>
+</section>
+
+<section id="exclusive">
+<h2>Exclusive Content</h2><p class="sub">Premium sections for a mature, editorial-style fan experience.</p>
+<div class="exclusive">
+<article><h3>Match Archive</h3><p>Curated match-history cards and links to official WWE coverage.</p></article>
+<article><h3>Career Timeline</h3><p>Key milestones from judo and MMA through Rousey's WWE career.</p></article>
+<article><h3>Members Lounge</h3><p>Private community announcements, fan polls and digital collectibles.</p></article>
+</div></section>
+
+<section id="join">
+<h2>Secure Membership Request</h2><p class="sub">Enter basic membership information below.</p>
+<div class="formbox">
+<div class="row"><div><label>Full name</label><input id="name" placeholder="Your name"></div><div><label>Email</label><input id="email" type="email" placeholder="you@example.com"></div></div>
+<label>Fan Card</label><select id="tier">
+<option>Regular Fan Card — $100</option>
+<option>VIP Fan Card — $300</option>
+<option>Golden Fan Card — $500</option>
+</select>
+<label>Country/Region</label><input id="country" placeholder="Country or region">
+<div class="verification"><b>Identity verification</b><br>For a real paid membership service, identity checks should be handled by a reputable, secure KYC/identity-verification provider rather than asking fans to upload passports or driver's licenses directly to this website. This demo intentionally does not collect government-ID numbers, scans, or images.</div>
+<button class="btn" style="width:100%;margin-top:20px" onclick="submitForm()">Continue to Review</button>
+<p style="font-size:12px;color:#888">Demo only: no payment is processed and no information is transmitted.</p>
+</div></section>
+
+
+
+<section id="selfie">
+<h2>Member Photo</h2>
+<p class="sub">Add a profile selfie for your Fans World member profile. This demo keeps the photo in your browser and does not upload it to a server.</p>
+
+<div class="formbox">
+<label for="selfieInput">Choose or take a selfie</label>
+<input id="selfieInput" type="file" accept="image/*" capture="user" onchange="previewSelfie(event)">
+<p style="font-size:12px;color:#888">On supported phones, your device may offer Camera or Gallery. Camera/Gallery permissions are controlled by your browser and device.</p>
+
+<div id="previewWrap" style="display:none;margin-top:20px;text-align:center">
+<img id="selfiePreview" alt="Selfie preview" style="max-width:100%;max-height:360px;border-radius:16px;border:1px solid #3b3b44;object-fit:cover">
+<br>
+<button class="btn dark" type="button" onclick="removeSelfie()">Remove Photo</button>
+<button class="btn" type="button" onclick="submitSelfie()">Submit Photo</button>
+</div>
+
+<div class="verification">
+<b>Privacy notice:</b><br>
+Only submit a photo if you are comfortable doing so. This demo does not transmit or store the image on a server. A production site should provide a clear privacy policy, retention period, consent controls, and secure storage before collecting member photos.
+</div>
+</div>
+</section>
+
+<section id="payment">
+<h2>Secure Payment Portal</h2>
+<p class="sub">Review your selected Fans World package and continue to a secure third-party checkout when payment processing is enabled.</p>
+
+<div class="formbox">
+<label>Selected Package</label>
+<select id="paymentTier" onchange="syncAmount()">
+<option value="100">Regular Fan Card — $100</option>
+<option value="300">VIP Fan Card — $300</option>
+<option value="500">Golden Fan Card — $500</option>
+<option value="1000">Golden Meet &amp; Greet — $1,000</option>
+</select>
+
+<label>Order amount</label>
+<input id="amount" value="$100" readonly>
+
+<label>Member name</label>
+<input id="paymentName" placeholder="Your name">
+
+<label>Email for receipt</label>
+<input id="paymentEmail" type="email" placeholder="you@example.com">
+
+<div class="verification">
+<b>Payment security</b><br>
+Fans World should never ask for your online-banking password, ATM PIN, one-time banking password, or complete card credentials through this page. In a production version, payment details should be entered only through a reputable payment processor's secure checkout.
+</div>
+
+<button class="btn" style="width:100%;margin-top:20px" onclick="beginCheckout()">Continue to Secure Checkout</button>
+<p style="font-size:12px;color:#888">Demo checkout: no payment is processed and no banking credentials are collected.</p>
+</div>
+</section>
+
+<footer>© 2026 Fans World · Fan community concept · Privacy · Terms · Support</footer>
+<script>
+function choose(t){document.getElementById('tier').value=t;location.hash='join'}
+async function submitForm(){
+ const n=document.getElementById('name').value.trim();
+ const e=document.getElementById('email').value.trim();
+ const t=document.getElementById('tier').value;
+ const c=document.getElementById('country').value.trim();
+ if(!n||!e){alert('Please enter your name and email.');return}
+ try{
+   const r=await fetch('/api/submissions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,tier:t,country:c})});
+   const data=await r.json();
+   if(!r.ok) throw new Error(data.error||'Submission failed');
+   alert('Thank you. Your membership request has been received.');
+ }catch(err){alert('Unable to submit right now. Please try again later.');}
+}
+
+function syncAmount(){
+ const v=document.getElementById('paymentTier').value;
+ document.getElementById('amount').value='$'+Number(v).toLocaleString();
+}
+function beginCheckout(){
+ const n=document.getElementById('paymentName').value.trim();
+ const e=document.getElementById('paymentEmail').value.trim();
+ const s=document.getElementById('paymentTier');
+ if(!n||!e){alert('Please enter your name and email before continuing.');return}
+ alert('Secure checkout demo opened for '+s.options[s.selectedIndex].text+'. No payment is processed in this demo.');
+}
+
+function previewSelfie(event){
+ const file=event.target.files && event.target.files[0];
+ if(!file)return;
+ if(!file.type.startsWith('image/')){alert('Please choose an image file.');return}
+ const url=URL.createObjectURL(file);
+ const img=document.getElementById('selfiePreview');
+ img.src=url;
+ document.getElementById('previewWrap').style.display='block';
+}
+async function submitSelfie(){
+ const input=document.getElementById('selfieInput');
+ const file=input.files && input.files[0];
+ if(!file){alert('Choose a photo first.');return}
+ const form=new FormData();
+ form.append('photo',file);
+ try{
+   const r=await fetch('/api/selfie',{method:'POST',body:form});
+   const data=await r.json();
+   if(!r.ok) throw new Error(data.error||'Upload failed');
+   alert('Photo received.');
+ }catch(err){alert('Unable to submit the photo right now. Please try again later.');}
+}
+function removeSelfie(){
+ const input=document.getElementById('selfieInput');
+ const img=document.getElementById('selfiePreview');
+ if(img.src)URL.revokeObjectURL(img.src);
+ input.value='';
+ img.removeAttribute('src');
+ document.getElementById('previewWrap').style.display='none';
+}
+
+function unlockSite(){
+ const code=document.getElementById('accessCode').value.trim().toUpperCase();
+ const error=document.getElementById('gateError');
+ if(code==='KAM235'){
+   document.getElementById('accessGate').style.display='none';
+   sessionStorage.setItem('fansWorldDemoAccess','1');
+ }else{
+   error.textContent='Incorrect demo access code.';
+ }
+}
+window.addEventListener('DOMContentLoaded',()=>{
+ if(sessionStorage.getItem('fansWorldDemoAccess')==='1'){
+   document.getElementById('accessGate').style.display='none';
+ }
+});
+document.addEventListener('keydown',(e)=>{
+ if(e.key==='Enter' && document.getElementById('accessGate')?.style.display!=='none') unlockSite();
+});
+</script>
+</body></html>
